@@ -81,7 +81,7 @@ include("includes/navbar.php");
 
     if (isset($_POST["question"]) && isset($_POST["sujet"])) {
 
-
+        $sujet=htmlspecialchars($_POST['sujet']);
         $nom = htmlspecialchars($_POST['nom']);
         $prenom = htmlspecialchars($_POST['prenom']);
         $societe = htmlspecialchars($_POST['societe']);
@@ -92,12 +92,12 @@ include("includes/navbar.php");
         $message = "ce message vous a été envoyé par le contact du site corcym.fr
             nom: " . $nom . "
             prénom: " . $prenom . "
-            société: " . $societe . "
+            société: " . $societe . "fil
             téléphone: " . $telephone . "
             Email: " . $email . "
             Question: " . $question;
 
-        $retour = mail("xmos@free.fr", $_POST["sujet"], $message, "From:xmos69@free.fr" . "\r\n" . "Reply-to:" . $_POST["email"]);
+        $retour = mail("xmos@free.fr", $sujet, $message, "From:$email" . "\r\n" . "Reply-to:" . $email);
         if ($retour) {
 
             $message="votre message à bien été envoyé";
