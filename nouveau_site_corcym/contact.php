@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
     <link rel="stylesheet" type="text/css" href="css/contact.css">
@@ -39,14 +40,14 @@ include("includes/navbar.php");
             <form method="post">
                 <div class="un">
                     <!-- <label class="radio_label" for="motif">Sujet</label>  -->
-                    
+
                     <input type="radio" name="sujet" id="pesee" value="pesée" required>
                     <label class="radio" for="pesee">Pesée</label>
                     <input type="radio" name="sujet" id="desinfection" value="désinfection" required>
                     <label class="radio" for="desinfection">Désinfection</label>
                     <input type="radio" name="sujet" id="autre" value="autre" required>
                     <label class="radio" for="autre">Autre</label>
-                                        
+
                 </div>
                 <div class="deux">
                     <!-- <label for="nom">Nom</label> -->
@@ -59,13 +60,13 @@ include("includes/navbar.php");
                     <input type="text" id="societe" name="societe" placeholder="Société">
                     <br>
                     <!-- <label for="telephone">téléphone</label> -->
-                    <input type="tel" id="telephone" name="telephone" placeholder="Téléphone"required>
+                    <input type="tel" id="telephone" name="telephone" placeholder="Téléphone" required>
                     <br>
                     <!-- <label for="email">Email</label> -->
-                    <input type="email" id="email" name="email" placeholder="Email"required>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
                     <br>
                     <!-- <label for="question">Question</label> -->
-                    <textarea name="question" id="question" cols="21" rows="5" placeholder="Votre question"required></textarea>
+                    <textarea name="question" id="question" cols="21" rows="5" placeholder="Votre question" required></textarea>
                 </div>
         </div>
         <div class="bouton">
@@ -75,13 +76,13 @@ include("includes/navbar.php");
         </form>
     </div>
     <?php
+    header('content-type: text/html; charset=utf-8');
 
 
 
+    if (!empty($_POST["question"]) && !empty($_POST["sujet"])) {
 
-    if (isset($_POST["question"]) && isset($_POST["sujet"])) {
-
-        $sujet=htmlspecialchars($_POST['sujet']);
+        $sujet = htmlspecialchars($_POST['sujet']);
         $nom = htmlspecialchars($_POST['nom']);
         $prenom = htmlspecialchars($_POST['prenom']);
         $societe = htmlspecialchars($_POST['societe']);
@@ -90,25 +91,23 @@ include("includes/navbar.php");
         $question = htmlspecialchars($_POST['question']);
 
         $message = "ce message vous a été envoyé par le contact du site corcym.fr
-            nom: " . $nom . "
-            prénom: " . $prenom . "
-            société: " . $societe . "fil
-            téléphone: " . $telephone . "
-            Email: " . $email . "
-            Question: " . $question;
-
+nom: " . $nom . "
+prénom: " . $prenom . "
+société: " . $societe . "
+téléphone: " . $telephone . "
+Email: " . $email . "
+Question: " . $question . "/n";
+        // $message = mb_convert_encoding($message, "utf-8");
         $retour = mail("xmos@free.fr", $sujet, $message, "From:$email" . "\r\n" . "Reply-to:" . $email);
         if ($retour) {
 
-            $message="votre message à bien été envoyé";
-            echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-
-            
+            $message = "votre message à bien été envoyé";
+            echo '<script type="text/javascript">window.alert("' . $message . '");</script>';
+        } else {
+            echo '<script type="text/javascript">window.alert("Veuillez remplir tous les champs obligatoires");</script>';
+            // echo "<p>Veuillez remplir tous les champs obligatoires</p>";
         }
-        else {
-            echo "<p>Veuillez remplir tous les champs obligatoires</p>";
-        }
-    } 
+    }
 
     ?>
 
