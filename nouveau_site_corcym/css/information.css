@@ -1,0 +1,252 @@
+h1 {
+    text-align: center;
+}
+
+
+/*  menu en mode telephone*/
+
+@media screen and (max-width:767.98px) {}
+
+
+/*  partie qui gere le menu en mode ordinateur */
+
+@media screen and (min-width:768px) {
+    body {
+        background-image: url('../img/poids3.png');
+        background-repeat: inherit;
+        background-size: 50%;
+    }
+    .general {
+        width: 1350px;
+        height: 600px;
+        /* border: solid red; */
+        padding: 15px;
+    }
+    .titre {
+        display: flex;
+        flex-direction: row;
+        width: 1300px;
+        height: 65px;
+        margin-bottom: 0px;
+        margin-top: 20px;
+        margin-left: 15px;
+        /* border: solid gold; */
+    }
+    .description {
+        width: 260px;
+        height: 58px;
+        /* border: 2px solid purple; */
+    }
+    .specifications {
+        width: 260px;
+        height: 58px;
+        /* border: solid blue; */
+    }
+    .Personnes {
+        width: 260px;
+        height: 58px;
+        /* border: solid yellow; */
+    }
+    .affichage {
+        display: flex;
+        flex-direction: row;
+        width: 1300px;
+        height: 450px;
+        /* border: solid orange; */
+    }
+    .image1 {
+        display: block;
+        margin: 0px auto;
+        width: 600px;
+        height: 400px;
+        /* border: solid black; */
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        margin-top: 5px;
+        margin-left: 20px;
+    }
+    #image1 {
+        border-radius: 15px;
+    }
+    #image2-3 {
+        display: none;
+    }
+    .image2-3 {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    #image2 {
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+        margin-left: 20px;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        margin-right: 50px;
+        /* border: solid 2px red; */
+    }
+    #image3 {
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        margin-left: 20px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-right: 50px;
+        /* border: solid 2px red; */
+    }
+    .texte {
+        position: relative;
+        width: 600px;
+        height: 400px;
+        /* border: solid black; */
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        margin-top: 5px;
+        margin-left: 20px;
+        padding-top: 10px;
+        padding-left: 20px;
+        list-style: square;
+        line-height: 1.5em;
+    }
+    .imageFondTexte {
+        position: absolute;
+        z-index: 1;
+        padding: 8px;
+        margin-top: 10px;
+        margin-left: 40px;
+        opacity: 0.3;
+    }
+    .texteFondDescription {
+        position: absolute;
+        z-index: 2;
+        /* border: solid 1px red; */
+    }
+    .texteFondDescription li {
+        list-style: square;
+    }
+    .texteFondDescription ul {
+        padding-left: 30px;
+        padding-right: 100px;
+    }
+    .texteFondSpecifications {
+        display: flex;
+        flex-direction: column;
+    }
+    .texteFondSpecifications1 {
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        display: none;
+        width: 600px;
+        height: 195px;
+        margin-bottom: 10px;
+        padding: 10px;
+        /* border: solid 2px blue; */
+    }
+    .texteFondSpecifications2 {
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        display: none;
+        width: 600px;
+        height: 195px;
+        padding: 10px;
+        /* border: solid 2px green; */
+    }
+    .texteFondPersonnes {
+        display: flex;
+        flex-direction: column;
+    }
+    .texteFondPersonnes1 {
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        display: none;
+        width: 600px;
+        height: 195px;
+        margin-bottom: 10px;
+        padding: 10px;
+        /* border: solid 2px blue; */
+    }
+    .texteFondPersonnes2 {
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        display: none;
+        width: 600px;
+        height: 195px;
+        padding: 10px;
+        /* border: solid 2px green; */
+    }
+    .texteFondPersonnes {
+        position: absolute;
+        z-index: 2;
+        display: none;
+    }
+    /* style des 3 boutons */
+    #description {
+        background-color: #ffffff;
+        width: 250px;
+        box-shadow: 2px 2px 2px rgb(19, 134, 150);
+        border: solid 1px rgb(214, 225, 226);
+        border-radius: 5px;
+        color: black;
+        padding: 10px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 18px;
+        margin: 4px 4px;
+        cursor: pointer;
+    }
+    #description:hover {
+        color: rgb(19, 134, 150);
+        box-shadow: 4px 5px 5px rgb(19, 134, 150);
+    }
+    #specifications {
+        background-color: #ffffff;
+        width: 250px;
+        box-shadow: 2px 2px 2px rgb(19, 134, 150);
+        border: solid 1px rgb(214, 225, 226);
+        border-radius: 5px;
+        ;
+        color: black;
+        padding: 10px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 18px;
+        margin: 4px 4px;
+        cursor: pointer;
+    }
+    #specifications:hover {
+        color: rgb(19, 134, 150);
+        ;
+        box-shadow: 4px 5px 5px rgb(19, 134, 150);
+    }
+    #personnes {
+        background-color: #ffffff;
+        width: 250px;
+        box-shadow: 2px 2px 2px rgb(19, 134, 150);
+        border: solid 1px rgb(214, 225, 226);
+        border-radius: 5px;
+        color: black;
+        padding: 10px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 18px;
+        margin: 4px 4px;
+        cursor: pointer;
+    }
+    #personnes:hover {
+        color: rgb(19, 134, 150);
+        ;
+        box-shadow: 4px 5px 5px rgb(19, 134, 150);
+    }
+    /* ---------------------------------------------- */
+    /* footer {
+        background: #ccc;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding-top: 50px;
+        height: 50px;
+    } */
+}
