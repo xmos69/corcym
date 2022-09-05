@@ -82,6 +82,7 @@ include("includes/navbar.php");
 
     if (!empty($_POST["question"]) && !empty($_POST["sujet"])) {
 
+        $pour = "xmos@free.fr";
         $sujet = htmlspecialchars($_POST['sujet']);
         $nom = htmlspecialchars($_POST['nom']);
         $prenom = htmlspecialchars($_POST['prenom']);
@@ -90,22 +91,29 @@ include("includes/navbar.php");
         $email = htmlspecialchars($_POST['email']);
         $question = htmlspecialchars($_POST['question']);
 
-        $message = "ce message vous a été envoyé par le contact du site corcym.fr
-nom: " . $nom . "
-prénom: " . $prenom . "
-société: " . $societe . "
-téléphone: " . $telephone . "
-Email: " . $email . "
-Question: " . $question . "/n";
-        // $message = mb_convert_encoding($message, "utf-8");
-        $retour = mail("xmos@free.fr", $sujet, $message, "From:$email" . "\r\n" . "Reply-to:" . $email);
-        if ($retour) {
+        // definition de l entete du courrier attention bien mettre "\r\n" pour separer chaque propriété
+        $entete = "MIME-Version: 1.0" . "\r\n";
+        $entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+        $entete .= 'From: ' . $email . "\r\n" . 'Reply-To: ' . $email . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
-            $message = "votre message à bien été envoyé";
-            echo '<script type="text/javascript">window.alert("' . $message . '");</script>';
+        // Composition du message électronique en HTML
+        $message  = '<html><body>';
+        $message .= '<h3>ce message vous a été envoyé par la page contact du site corcym.fr</h3>';
+        $message .= '<p>nom: <strong>' . $nom . '</strong></p>';
+        $message .= '<p>Prénom: <strong>' . $prenom . '</strong></p>';
+        $message .= '<p>Société: <strong>' . $societe . '</strong></p>';
+        $message .= '<p>Téléphone: <strong>' . $telephone . '</strong></p>';
+        $message .= '<p>Email: <strong>' . $email . '</strong></p>';
+        $message .= '<p>Question: <strong>' . $question . '</strong></p>';
+        $message .= '</body></html>';
+
+        // Envoi de l'email
+        if (mail($pour, $sujet, $message, $entete)) {
+            $ok = "votre message à bien été envoyé";
+            echo '<script type="text/javascript">window.alert("' . $ok . '");</script>';
         } else {
-            echo '<script type="text/javascript">window.alert("Veuillez remplir tous les champs obligatoires");</script>';
-            // echo "<p>Veuillez remplir tous les champs obligatoires</p>";
+            $erreur = "Veuillez remplir tous les champs obligatoires";
+            echo '<script type="text/javascript">window.alert("' . $erreur . '");</script>';
         }
     }
 
